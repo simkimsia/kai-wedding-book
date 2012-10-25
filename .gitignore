@@ -3,3 +3,13 @@ config/database.php
 app/tmp/*
 app/config/database.php
 !empty
+
+*.kpf
+.idea
+pmip
+*.tmproj
+.DS_Store
+*.DS_Store
+*.sublime-project
+*.sublime-workspace
+tags
