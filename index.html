@@ -7,7 +7,9 @@
  	<meta charset="utf-8">
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<title>WEDDING BOOK</title>
+
  	<meta name="viewport" content="width=device-width">
+	<link rel="stylesheet" type="text/css" href="css/styles.css">
  	<script type="text/javascript" src="js/modernizr/2.5.3/modernizr.min.js"></script>
 </head>
 <body>
@@ -26,9 +28,9 @@
 					
 				<!-- fill these two with bob and bof 
 				<div id="book-bof" class="hard tmp-page-holder">back of front</div>
-				<div id="book-bob" class="hard tmp-page-holder">back of back</div> -->
+				<div id="book-bob" class="hard tmp-page-holder">back of back</div> 
 
-				<div id="book-backcover" class="hard tmp-page-holder"></div>
+				<div id="book-backcover" class="hard tmp-page-holder"></div>-->
 			</div>
 
         	
@@ -49,10 +51,83 @@
 
     <script type="text/javascript">
 
+    	var flipbook = null;
+
+    	function getRandomNumber() {
+			return Math.floor((Math.random()*1000000)+1);
+		}
+
     	$(document).ready(function () {
-    		alert('hihi');
+    		//alert('hihi');
+    		loadApp();
+    		buildTheBook();
     	});
 
+    	function loadApp() {
+
+			$("#reading-pane-book").turn({
+			    autoCenter: true,
+			    width: 1340,
+			    height: 947,
+			    
+			    
+			});
+			flipbook = $("#reading-pane-book");
+		}
+
+		function buildTheBook() {
+			var frontcover = $("#book-frontcover");
+
+			var maxpage = 34;
+
+			var image = new Image();
+	
+			// setup front						
+			image.src = "WEDDING BOOK/COVER FRONT.jpg";
+			$(image).css({
+				"height" : "100%",
+				"width" : "100%",
+			});
+			
+			frontcover.append(image);
+
+			//setup pages
+			for(page = 1; page <= maxpage; page++) {
+				var pagediv = $("<div />", {
+					id : "page" + page,
+
+				});
+
+				if (page == 1 || page == maxpage) {
+					pagediv.addClass("hard");
+				}
+
+				image = new Image();
+				image.src = "WEDDING BOOK/P"+page+".jpg";
+				$(image).css({
+					"height" : "100%",
+					"width" : "100%",
+				});
+				
+				pagediv.append(image);
+				flipbook.turn("addPage", pagediv, flipbook.turn('pages')+1);
+			}
+
+			// setup back
+			var backcover = $("<div />", {
+				id : "book-backcover",
+				class : "hard tmp-page-holder bof"
+			});
+			image = new Image();
+			image.src = "WEDDING BOOK/COVER BACK.jpg";
+			$(image).css({
+				"height" : "100%",
+				"width" : "100%",
+			});
+			
+			backcover.append(image);
+			flipbook.turn("addPage", backcover, flipbook.turn('pages')+1);
+		}
 
     </script>
 </body>

@@ -1,4 +1,4 @@
-#inner-wrapper { 
+#inner-wrap{ 
 	/*
 	width: 80%;
 	height: auto;
@@ -6,13 +6,13 @@
 	margin-right:10%;
 	
 	*/
-	width: 840px;
-	height: 600px;
 	position: absolute;
-	top: 50px;
-	bottom: 50px;
+	width: 1340px;
+	height: 100%;
+	margin: 5px auto;
+
 	left:50%;
-	margin-left:-422px;
+	margin-left:-670px;
 	
 	opacity: 1;
 	/*background-color:white;
@@ -25,6 +25,8 @@
 }
 #reading-pane-book {
 	opacity: 1;
+	
+
 }
 
 #reading-pane-book .page{
