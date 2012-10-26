@@ -67,10 +67,10 @@
     	function loadApp() {
 
 			$("#reading-pane-book").turn({
-			    autoCenter: true,
+			    //autoCenter: true,
 			    width: 1340,
 			    height: 947,
-			    
+			    duration: 3000,
 			    
 			});
 			flipbook = $("#reading-pane-book");
@@ -103,6 +103,12 @@
 					pagediv.addClass("hard");
 				}
 
+				// add gradient then add image
+				var gradient = $("<div />");
+				gradient.addClass("gradient");
+				pagediv.append(gradient);
+
+
 				image = new Image();
 				image.src = "WEDDING BOOK/P"+page+".jpg";
 				$(image).css({
@@ -130,7 +136,7 @@
 			flipbook.turn("addPage", backcover, flipbook.turn('pages')+1);
 		}
 
-		var iFrequency = 5000; // expressed in miliseconds
+		var iFrequency = 10000; // expressed in miliseconds
 		var myInterval = 0;
 
 		// STARTS and Resets the loop if any
